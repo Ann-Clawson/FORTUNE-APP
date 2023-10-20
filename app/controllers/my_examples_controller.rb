@@ -1,16 +1,13 @@
 class MyExamplesController < ApplicationController
   def fortune_teller
-    strings = ["You will win the lottery", "No, im just kidding", "Don't amswer your next phone call"]
+    strings = ["All signs point to 'yes.'", "It is decidedly so", "It is certain"]
     fortune = strings[rand(strings.length)]
     render json: { "Your fortune is:" => "#{fortune}" }
   end
 
   def lotto_numbers
-    numbers = (1..60).to_a
-    lotto_numbers = []
-    6.times do
-      lotto_numbers << numbers[rand(numbers.length)]
-    end
-    render json: { "Winning numbers are:" => "#{lotto_numbers}" }
+    numbers = []
+    6.times { numbers << rand(1..60) }
+    render json: { "Winning numbers are": "#{numbers}" }
   end
 end
